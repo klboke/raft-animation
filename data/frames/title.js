@@ -20,7 +20,7 @@ define([], function () {
             layout.invalidate();
         })
         .after(500, function () {
-            frame.model().subtitle = '<p style="visibility:visible"><em><a href="https://github.com/benbjohnson/thesecretlivesofdata/issues/1" target="_blank">有任何问题，可按此提供建议</a></em></h1>';
+            frame.model().subtitle = '<p style="visibility:visible"><em><a href="http://www.kailing.pub/feedback/index.html" target="_blank">有任务问题，可按此提供建议</a></em></h1>';
             layout.invalidate();
             frame.model().controls.show();
         })
