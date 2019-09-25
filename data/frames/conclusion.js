@@ -24,7 +24,8 @@ define([], function () {
 
         .after(500, function () {
             frame.model().title = '<h2 style="visibility:visible">更多资源信息:</h2>'
-                        + '<h3 style="visibility:visible"><a href="https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md">Raft论文译文</a></h3>'
+                + '<h3 style="visibility:visible"><a href="https://github.com/klboke/raft-animation">本站源码</a></h3>'
+                + '<h3 style="visibility:visible"><a href="https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md">Raft论文译文</a></h3>'
                         + '<h3 style="visibility:visible"><a href="http://raftconsensus.github.io/">Raft官方站点</a></h3>'
                         + '<h3 style="visibility:visible"><a href="http://thesecretlivesofdata.com/raft/">Raft英文原版</a></h3>'
                         + '<br/>' + frame.model().controls.html();
