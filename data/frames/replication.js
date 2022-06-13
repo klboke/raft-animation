@@ -53,7 +53,7 @@ define([], function () {
         // Overview
         //------------------------------
         .then(function () {
-            subtitle('<h2>当选出一位领导人后，我们需要将系统的所有更改复制到所有节点。</h2>', false);
+            subtitle('<h2>当选出一位领导人后，领导人需要将系统的所有更改复制到所有存活节点。</h2>', false);
         })
         .then(wait).indefinite()
         .then(function () {
@@ -82,16 +82,16 @@ define([], function () {
         })
         .at(model(), "appendEntriesRequestsSent", function () {})
         .after(model().defaultNetworkLatency * 0.25, function(event) {
-            subtitle('<h2>...然后将更改操作在下一个心跳发送给追随者。</h2>');
+            subtitle('<h2>然后将更改操作通过<em>Append Entries</em>消息发送给追随者。</h2>');
         })
         .after(1, clear)
         .at(model(), "commitIndexChange", function (event) {
             if(event.target === model().leader()) {
-                subtitle('<h2>一旦大多数追随者认可，便提交该条目。</h2>');
+                subtitle('<h2>一旦大多数追随者接受了该消息，领导者便提交该条目到自己的状态机。</h2>');
             }
         })
         .after(model().defaultNetworkLatency * 0.25, function(event) {
-            subtitle('<h2>..然后将响应发送给客户端。</h2>');
+            subtitle('<h2>然后将响应发送给客户端。</h2>');
         })
         .after(1, clear)
         .after(model().defaultNetworkLatency, function(event) {
@@ -132,7 +132,7 @@ define([], function () {
         })
         .after(1, wait).indefinite()
         .after(1, function () {
-            subtitle('<h2>让我们添加一个分区以将A和B与C，D，E分开。</h2>', false);
+            subtitle('<h2>让我们通过添加一个网络分区以将A、B与C、D、E分开。</h2>', false);
         })
         .after(1, wait).indefinite()
         .after(1, function () {
@@ -175,7 +175,7 @@ define([], function () {
         })
         .after(1, wait).indefinite()
         .after(1, function () {
-            subtitle('<h2>这将会成功，因为它可以复制到大多数。</h2>', false);
+            subtitle('<h2>这将会成功，因为它可以复制到大多数节点。</h2>', false);
         })
         .after(1, wait).indefinite()
         .after(1, function () {
@@ -193,7 +193,7 @@ define([], function () {
             return (event.target.id === "B" && event.target.state() === "follower");
         })
         .after(1, function () {
-            subtitle('<h2>节点B将看到较高的选举期限并退出</h2>');
+            subtitle('<h2>节点B将看到节点C有更高的任期并从领导者角色回退到追随者角色</h2>');
         })
         .after(1, function () {
             subtitle('<h2>节点A和B都将回滚其未提交的条目并匹配新领导者的日志。</h2>');
