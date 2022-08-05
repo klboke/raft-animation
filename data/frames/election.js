@@ -81,7 +81,7 @@ define([], function () {
             subtitle('<h2>...并向其他节点发送 <em>Request Vote</em> 请求投票消息</h2>');
         })
         .after(model().defaultNetworkLatency, function () {
-            subtitle('<h2>如果接收节点在这个学期中还没有投票，那么它将投票给候选人...</h2>');
+            subtitle('<h2>如果接收节点在这个任期中还没有投票，那么它将投票给候选人...</h2>');
         })
         .after(1, function () {
             subtitle('<h2>...并且节点将重置其<span style="color:green">election timeout</span>选举超时.</h2>');
@@ -143,7 +143,7 @@ define([], function () {
         // Split Vote
         //------------------------------
         .after(1, function () {
-            subtitle('<h2>要获得多数票，可以确保每个任期只能选出一位领导者。</h2>', false);
+            subtitle('<h2>要求候选节点获得多数票才能成为领导者，可以确保每个任期只能选出一位领导者。</h2>', false);
         })
         .after(1, wait).indefinite()
         .after(1, function () {
@@ -171,10 +171,10 @@ define([], function () {
             return (event.target.state() === "candidate");
         })
         .after(model().defaultNetworkLatency * 0.25, function () {
-            subtitle('<h2>两个节点都开始以相同的任期进行选举...</h2>');
+            subtitle('<h2>两个节点都开始以相同的任期请求进行选举...</h2>');
         })
         .after(model().defaultNetworkLatency * 0.75, function () {
-            subtitle('<h2>...每个都先到达一个跟随者节点。</h2>');
+            subtitle('<h2>每个候选人节点的投票请求都先到达一个不同的跟随者节点。</h2>');
         })
         .after(model().defaultNetworkLatency, function () {
             subtitle('<h2>现在，每个候选人都有2票，并且在这个任期中将无法获得更多选票。</h2>');
@@ -187,7 +187,7 @@ define([], function () {
         })
         .after(1, function () {
             model().resetLatencies();
-            subtitle('<h2>节点 ' + model().leader().id + ' 在任期内获得多数选票 ' + model().leader().currentTerm() + '所以它成为新的领导者。</h2>', false);
+            subtitle('<h2>节点 ' + model().leader().id + ' 在任期'  + model().leader().currentTerm() + '内获得多数选票，所以它成为新的领导者。</h2>', false);
         })
         .after(1, wait).indefinite()
 
